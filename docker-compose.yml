@@ -1,0 +1,32 @@
+version: "3.7"
+
+# see the following docs for customizing the fastapi docker image
+# - https://github.com/tiangolo/uvicorn-gunicorn-fastapi-docker
+# - https://github.com/tiangolo/uvicorn-gunicorn-docker
+
+services:
+  api-prod: &api-base
+    build:
+      context: .
+      dockerfile: ./app/api/Dockerfile
+    # mount the directories into `/app` inside the running container.
+    volumes:  
+      - ./app/api:/app
+      - ./ml-models:/ml-models
+    ports:
+      - "80:80"
+    # environment variables file
+    env_file:
+      - ./envs/.env
+
+  api-dev:
+    <<: *api-base
+    # see other "environment" options here: https://github.com/tiangolo/uvicorn-gunicorn-starlette-docker
+    environment:
+      - PORT=5000
+    # map port 4000 to 5000 (the port the container exposes)
+    ports:
+      - "4000:5000"
+      - "5678:5678"
+    # override Dockerfile CMD
+    command: ['/start-reload.sh']

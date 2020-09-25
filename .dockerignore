@@ -1,0 +1,7 @@
+*.pth
+.git
+.gitignore
+__pycache__
+*.pyc
+Dockerfile
+README.md

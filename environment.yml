@@ -1,0 +1,8 @@
+name: fastapi-template
+channels:
+dependencies:
+  - python=3.7
+  - pip:
+      - torch>=1.6.0
+      - torchvision>=0.7.0
+      - -r file:./app/api/requirements.txt

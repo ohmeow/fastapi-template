@@ -1,0 +1,23 @@
+
+# app
+fastapi>=0.61.0
+starlette
+pydantic>=1.2.0,<2.0.0
+aiohttp
+aiofiles
+# Click#==7.0
+# gunicorn#==19.9.0
+# h11#==0.8.1
+# httptools#==0.0.13
+# joblib#==0.14.0
+# python-multipart#==0.0.5
+# uvicorn#==0.10.0
+# uvloop#==0.13.0
+# websockets#==8.0.2
+
+# ml libs
+scikit-learn==0.21.3
+fastai
+
+# vscode debugging
+debugpy
